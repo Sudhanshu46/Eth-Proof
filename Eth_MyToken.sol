@@ -19,27 +19,27 @@ pragma solidity 0.8.18;
 contract MyToken {
 
     // public variables here
-    string public tokenName = "Hunter";
-    string public tokenAbbvr = "hunt";
+    string public tokenName = "hunter";
+    string public Abbvr = "hunt";
     uint public totalSupply = 0;
 
 
     // mapping variable here
-    mapping(address=>uint) public tokenHolders;
+    mapping(address=>uint) public balance;
 
 
     // mint function
     function mint(address _address, uint _value) public{
         totalSupply+=_value;
-        tokenHolders[_address] += _value;
+        balance[_address] += _value;
     }
 
 
     // burn function
     function burn(address _address, uint _value) public{
-        require(tokenHolders[_address] > _value, "Cannot burn more than balance tokens");
+        if (balance[_address] >= _value){
         totalSupply -=_value;
-        tokenHolders[_address] -= _value;
+        balance[_address] -= _value;
+        }
     }
-
 }
