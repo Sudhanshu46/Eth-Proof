@@ -30,7 +30,7 @@ contract MyToken {
 
     // mint function
     function mint(address _address, uint _value) public{
-        totalSupply+=_value;
+        totalSupply +=_value;
         balance[_address] += _value;
     }
 
